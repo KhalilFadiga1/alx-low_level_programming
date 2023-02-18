@@ -6,15 +6,24 @@
  */
 int main(void)
 {
-	int a;
+	int ones = '0';
+	int tens = '0';
 
-	for (a = 10; a < 100; a++)
+	for (tens = '0';tens < '9'; tens++)/* printing of tens */
 	{
-		putchar( a + '0');
-		if (a < 99)
+		
+		for (ones = '0';ones < '9'; one++)/* printing of ones */
 		{
-			putchar(',');
-			putchar(' ');
+			if (!((ones == tens) || (tens > ones)))/* remove repetition */
+			{
+				putchar(tens);
+				putchar(ones);
+				if (!(ones == '9' && tens == '8'))
+				{
+					putchar(',');
+					putchar(' ');
+				}
+			}	
 		}
 	}
 	putchar('\n');
