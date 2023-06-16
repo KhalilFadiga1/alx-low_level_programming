@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 /**
  * main - a program that prints a line with puts function
  * Return: 0 (Successful)
