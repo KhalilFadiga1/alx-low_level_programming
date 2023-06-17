@@ -10,7 +10,7 @@ int main(void)
 	while (lower <= 'z')
 	{
 		if (lower == 'q' || lower == 'e')
-			continue;
+			lower += 1;
 		putchar(lower);
 		lower += 1;
 	}
