@@ -17,7 +17,7 @@ char *rot13(char *str)
 	{
 	for (j = 0; j < 52; j++)
 	{
-	if (data1[i] == str[j])
+	if (str[i] == data1[j])
 	{
 	str[i] = datarot[j];
 	break;
