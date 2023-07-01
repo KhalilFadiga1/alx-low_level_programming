@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * res_string - reserve array
+ * rev_string - reserve array
  * @n: Input value
  */
-void res_string(char *n)
+void rev_string(char *n)
 {
 	int i = 0, j = 0;
 	char temp;
@@ -68,6 +68,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	if (digits == size_r)
 		return (0);
 	*(r + digits) = '\0';
-	res_string(r);
+	rev_string(r);
 	return (r);
 }
