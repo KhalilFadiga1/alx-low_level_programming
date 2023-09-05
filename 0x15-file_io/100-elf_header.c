@@ -67,11 +67,11 @@ void print_class(unsigned char *e_ident)
                 case ELFCLASSNONE:
                         printf("None\n");
                         break;
-                case ELFCLASS64:
-                        printf("ELF64\n");
-                        break;
                 case ELFCLASS32:
                         printf("ELF32\n");
+                        break;
+                case ELFCLASS64:
+                        printf("ELF64\n");
                         break;
                 default:
                         printf("<unknown: %x>\n", e_ident[EI_CLASS]);
@@ -89,13 +89,13 @@ void print_data(unsigned char *e_ident)
         switch (e_ident[EI_DATA])
         {
                 case ELFDATANONE:
-                        printf("None\n");
-                        break;
-                case ELFDATA2MSB:
-                        printf("2's compliment, big endian\n");
+                        printf("none\n");
                         break;
                 case ELFDATA2LSB:
                         printf("2's complement, little endian\n");
+                        break;
+                case ELFDATA2MSB:
+                        printf("2's complement, big endian\n");
                         break;
                 default:
                         printf("<unknown: %x>\n", e_ident[EI_CLASS]);
@@ -130,7 +130,7 @@ void print_osabi(unsigned char *e_ident)
 	switch (e_ident[EI_OSABI])
 	{
 		case ELFOSABI_NONE:
-			printf("UNIX - System version\n");
+			printf("UNIX - System V\n");
 			break;
 		case ELFOSABI_HPUX:
 			printf("UNIX - HP-UX\n");
@@ -138,8 +138,8 @@ void print_osabi(unsigned char *e_ident)
 		case ELFOSABI_NETBSD:
 			printf("UNIX - NetBSD\n");
 			break;
-		case ELFOSABI_ARM:
-			printf("ARM\n");
+		case ELFOSABI_LINUX:
+			printf("UNIX - Linux\n");
 			break;
 		case ELFOSABI_SOLARIS:
 			printf("UNIX - Solaris\n");
@@ -153,11 +153,11 @@ void print_osabi(unsigned char *e_ident)
 		case ELFOSABI_TRU64:
 			printf("UNIX - TRU64\n");
 			break;
+		case ELFOSABI_ARM:
+			printf("ARM\n");
+			break;
 		case ELFOSABI_STANDALONE:
 			printf("Standalone App\n");
-			break;
-		case ELFOSABI_LINUX:
-			printf("UNIX - LINUX\n");
 			break;
 		default:
 			printf("<unknown: %x>\n", e_ident[EI_OSABI]);
@@ -191,14 +191,14 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 		case ET_REL:
 			printf("REL (Relocatable file)\n");
 			break;
-		case ET_CORE:
-			printf("CORE (Core file)\n");
-			break;
 		case ET_EXEC:
 			printf("EXEC (Executable file)\n");
 			break;
 		case ET_DYN:
 			printf("DYN (Shared object file)\n");
+			break;
+		case ET_CORE:
+			printf("CORE (Core File)\n");
 			break;
 		default:
 			printf("<unknown: %x>\n", e_type);
