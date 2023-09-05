@@ -27,14 +27,14 @@ char *create_buffer(char *file)
  * close_file - Endd the file descriptors
  * @ab: Closed file descriptor
  */
-void close_file(int ab)
+void close_file(int fd)
 {
 	int z;
 
-	z = close(ab);
+	z = close(fd);
 	if (z == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close ab %d\n", ab);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: dp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	buf = create_buffer(argv[2]);
