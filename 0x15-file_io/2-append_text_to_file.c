@@ -3,7 +3,7 @@
 /**
  * append_text_to_file - Adds text to the end of afile
  * @filename: ptr to the file name
- * @text_count: Chars to be added to the file
+ * @text_content: Chars to be added to the file
  * Return: If the function works 1, or if it fails or filename is empty
  * or file does not exist or user do not have permit -1
  */
