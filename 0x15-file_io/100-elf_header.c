@@ -24,12 +24,14 @@ void close_elf(int elf);
  */
 void check_elf(unsigned char *e_ident)
 {
-	int post;
+	int index;
 
-	for (post = 0; post < 4; post++)
+	for (index = 0; index < 4; index++)
 	{
-		if (e_ident[post] != 127 && e_ident[post] != 'E' &&
-				e_ident[post] != 'L' && e_ident[post] != 'F')
+		if (e_ident[index] != 127 &&
+			e_ident[index] != 'E' &&
+			e_ident[index] != 'L' &&
+			e_ident[index] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 			exit(98);
@@ -44,13 +46,13 @@ void check_elf(unsigned char *e_ident)
  */
 void print_magic(unsigned char *e_ident)
 {
-	int post;
+	int index;
 
 	printf(" Magic: ");
-	for (post = 0; post < EI_NIDENT; post++)
+	for (index = 0; index < EI_NIDENT; index++)
 	{
-		printf("%02x", e_ident[post]);
-		if (post == EI_NIDENT - 1)
+		printf("%02x", e_ident[index]);
+		if (index == EI_NIDENT - 1)
 			printf("\n");
 		else
 			printf(" ");
@@ -246,41 +248,41 @@ void close_elf(int elf)
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
-	int x, y;
-	Elf64_Ehdr *head;
+	int o, r;
+	Elf64_Ehdr *header;
 
-	x = open(argv[1], O_RDONLY);
-	if (x == -1)
+	o = open(argv[1], O_RDONLY);
+	if (o == -1)
 	{
 		dprintf(STDERR_FILENO, "ERROR: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
-	head = malloc(sizeof(Elf64_Ehdr));
-	if (head == NULL)
+	header = malloc(sizeof(Elf64_Ehdr));
+	if (header == NULL)
 	{
-		close_elf(x);
+		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
-	y = read(x, head, sizeof(Elf64_Ehdr));
-	if (y == -1)
+	r = read(o, header, sizeof(Elf64_Ehdr));
+	if (r == -1)
 	{
-		free(head);
-		close_elf(x);
+		free(header);
+		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
 		exit(98);
 	}
-	check_elf(head->e_ident);
+	check_elf(header->e_ident);
 	printf("ELF Header:\n");
-	print_magic(head->e_ident);
-	print_class(head->e_ident);
-	print_data(head->e_ident);
-	print_version(head->e_ident);
-	print_osabi(head->e_ident);
-	print_abi(head->e_ident);
-	print_type(head->e_type, head->e_ident);
-	print_entry(head->e_entry, head->e_ident);
-	free(head);
-	close_elf(x);
+	print_magic(header->e_ident);
+	print_class(header->e_ident);
+	print_data(header->e_ident);
+	print_version(header->e_ident);
+	print_osabi(header->e_ident);
+	print_abi(header->e_ident);
+	print_type(header->e_type, header->e_ident);
+	print_entry(header->e_entry, header->e_ident);
+	free(header);
+	close_elf(o);
 	return (0);
 }
