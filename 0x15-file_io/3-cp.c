@@ -25,7 +25,7 @@ void error_file(int file_from, int file_to, char *argv[])
 /**
  * main - Verify a code for Holberton School Students
  * @argc: Arg Counter
- * @argc: Arg pointer
+ * @argv: Arg pointer
  * Return: 0 if success
  */
 int main(int argc, char *argv[])
