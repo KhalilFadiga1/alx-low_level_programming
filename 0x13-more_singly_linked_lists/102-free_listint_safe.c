@@ -7,7 +7,8 @@
  */
 void free_listp2(listp_t **head)
 {
-	listp_t *cur, *temp; 
+	listp_t *cur, *temp;
+
 	if (head != NULL)
 	{
 		cur = *head;
@@ -22,7 +23,7 @@ void free_listp2(listp_t **head)
 
 /**
  * free_listint_safe - Displays LIstint_t linked list
- * @head: Ptr to the Head 
+ * @h: Ptr to the Head
  * Return: Num of Elem in the List
  */
 size_t free_listint_safe(listint_t **h)
