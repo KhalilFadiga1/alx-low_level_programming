@@ -2,12 +2,13 @@
 #include <stdio.h>
 
 /**
- * free_listd - Delete an element
+ * free_listp - Delete an element
  * @head: Ptr to Head
  */
 void free_listp(listp_t **head)
 {
-	listp_t *cur, *temp; 
+	listp_t *cur, *temp;
+
 	if (head != NULL)
 	{
 		cur = *head;
@@ -22,7 +23,7 @@ void free_listp(listp_t **head)
 
 /**
  * print_listint_safe - Displays LIstint_t linked list
- * @head: Ptr to the Head 
+ * @head: Ptr to the Head
  * Return: Num of Elem in the List
  */
 size_t print_listint_safe(const listint_t *head)
