@@ -15,4 +15,23 @@ listint_t *find_listint_loop(listint_t *head)
 	{
 		head = head->next;
 		p = p->next->next;
-		if (
+		if (head == p)
+		{
+			head = previous;
+			previous = p;
+			while (1)
+			{
+				p = previous;
+				while (p->next != head && p->next != previous)
+				{
+					p = p->next;
+				}
+				if (p->next == head)
+					break;
+				head = head->next;
+			}
+			return (p->next);
+		}
+	}
+	return (NULL);
+}
